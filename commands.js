@@ -1,9 +1,11 @@
 const prefix = '!'
 const gif = require('./commands/gif.js')
 const ping = require('./commands/ping.js')
+const intro = require('./commands/intro.js')
 const commands = {
     gif,
-    ping
+    ping,
+    intro
 }
 module.exports = async function (msg, args) {
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
@@ -14,6 +16,9 @@ module.exports = async function (msg, args) {
         commands[command](msg, args)
     }
     if (command === "gif") {
+        commands[command](msg)
+    }
+    if (command === "intro") {
         commands[command](msg)
     }
 }
