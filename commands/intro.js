@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 client.token = process.env.BOTTOKEN;
-const devid = '436844058217021441';
+const devid = process.env.ownerid;
 const camp_name = "Ɖɨʋɨռɛ";
 
 function getRandomColor() {
@@ -13,8 +13,7 @@ function getRandomColor() {
     return color;
 }
 module.exports = async function (msg) {
-    const dev = devid => client.users.fetch(devid);
-    console.log(dev)
+    const dev = await client.users.fetch(devid);
     let mssg = `Thanks for you're concern.\nI am a bot developed by **${dev.tag}** to help our campmates here in **${camp_name}**. Any trouble, DM me.`;
     const embed = new Discord.MessageEmbed()
         .setColor(getRandomColor())
